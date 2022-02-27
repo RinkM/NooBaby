@@ -19,7 +19,7 @@ canvas.pack()
 def test_funtion(entry):
     print ("You wrote:", entry)
 
-# background_image = tkinter.PhotoImage (file = '/Rainywindow2.png')
+# background_image = tkinter.PhotoImage (file = 'Rainywindow2.png')
 
 
 # background_label = tkinter.Label(root, image = background_image)

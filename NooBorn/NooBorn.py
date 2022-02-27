@@ -87,8 +87,7 @@ class CreateButton():
 
 
 
-def split_frame():
-    frame.place(relwidth = .5, relheight = .5)
+# def split_frame():
 
 # button.place(relx = 0, rely = 0.1)
 
