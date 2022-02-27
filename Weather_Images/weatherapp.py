@@ -19,11 +19,11 @@ canvas.pack()
 def test_funtion(entry):
     print ("You wrote:", entry)
 
-background_image = tkinter.PhotoImage (file = 'Weather_Images\Rainywindow2.png')
+# background_image = tkinter.PhotoImage (file = '/Rainywindow2.png')
 
 
-background_label = tkinter.Label(root, image = background_image)
-background_label.place(anchor = "n", relx = .5, rely = 0)
+# background_label = tkinter.Label(root, image = background_image)
+# background_label.place(anchor = "n", relx = .5, rely = 0)
 
 #Frame can divide the window in 'frames' relx and rely = relative to 0.  Theyre written, they're centered. 
 #frame is a location (container?) can use it instead of root.
