@@ -6,7 +6,16 @@
 # reorganize SQL - make it so important info is first.   
 
 
+
+
 """
+3/31 
+with sql and log in.    need to get through the log in gate to get into the program. the log in runs first? 
+if it succeeds, it creates the program.  
+stores the userID and babyID so it can always be accessed. 
+
+
+
 Goals for the future - 
 THink about making the API by itself in it's own application.  Finish the SQL THINGS. Then look up API what I have...
 How to turn this into website with flask.  Use that to change the visuals again.  It will need to be updated.
@@ -60,8 +69,6 @@ def main1():
     database = sqlite3.connect('noob_database.db')
     cursor = database.cursor()
 
-    database = "noob_database.db"
-
 
 
 
@@ -71,9 +78,9 @@ def main1():
     root = ctk.CTk() 
     root.geometry("1024x576")
     root.resizable(width=False, height=False)
-    root.title("NooBorn Test Window")
+    root.title("NooBorn Window")
 
-
+    
     
     
     #List of Frames:
@@ -411,8 +418,8 @@ def main1():
 
     #Submits data to database. uses the button input to submit data to sqlite.  #need to fix the variables. 
     def bottle_button():    
-        id = random.randint(30,4000)
-        cursor.execute("INSERT INTO bottle3 (bottle_num, datetime, utc, amount, baby_id, product, product_id) VALUES (?,?,?,?,?,?,?)",
+        id = random.randint(30,40000)
+        cursor.execute("INSERT INTO bottle (bottle_num, datetime, utc, amount, baby_id, product, product_id) VALUES (?,?,?,?,?,?,?)",
                     [id, datetime.datetime.now(), time.time(), 180, 803, 'Powder Milk', 100])
         database.commit()
         print("Bottle Data Captured")
@@ -471,9 +478,9 @@ def main1():
         how_much_label.grid(column = 0,  padx = 5, pady = 5, row =0, rowspan = 1)     
         amount_slider.grid(column = 1,  padx = 5, pady = 5, row = 0, rowspan = 1, columnspan=2)
 
-        Collect_Time(top_frame_2).grid(column = 0, row = 2, rowspan= 3, padx = 5, pady = 5,)
-        Collect_Date(top_frame_2).grid(column = 1, row = 2, rowspan = 3, padx = 5, pady = 5,)
-        print(Collect_Time.hour.get())
+        time_entry = Collect_Time(top_frame_2).grid(column = 0, row = 2, rowspan= 3, padx = 5, pady = 5,)
+        date_entry = Collect_Date(top_frame_2).grid(column = 1, row = 2, rowspan = 3, padx = 5, pady = 5,)
+        # print(time_entry.hour.get())
         
 
 
@@ -510,7 +517,7 @@ def main1():
         
         # use_current_time_button.grid(column = 0, row = 3, columnspan = 2)
 
-
+        # Functions to store USERNAME / PAssword profoile information. 
     def store_baby_data(babyname,babybday):
         # print(["baby_profile", "Profile_NUM", str(datetime.datetime.now()), time.time(), baby_uuid, babyname, babybday, user_uuid])
 
@@ -627,21 +634,21 @@ def main1():
 
 
 
-
-    def check_for_user():
-        cursor.execute("SELECT * FROM user_profile")
-        user= cursor.fetchall()
-        print(user)
-        print('user', (user[0][1]))
-        if user[0][1]:
-            NooB_Profile.main(root)
+    
+    # def check_for_user():
+    #     cursor.execute("SELECT * FROM user_profile")
+    #     user= cursor.fetchall()
+    #     print(type(user))
+    #     print('user', (user))
+    #     if user==[]:
+    #         NooB_Profile.main(root)
 
 
             
 
         
-        else:
-            button_builder(main_menu)
+        # else:
+        #     
             
 
 
@@ -653,9 +660,9 @@ def main1():
 
 
 
-
-    check_for_user()
-
+    # button_builder(main_menu)
+    # check_for_user()
+    NooB_Profile.main(root)
     root.mainloop()
 
 

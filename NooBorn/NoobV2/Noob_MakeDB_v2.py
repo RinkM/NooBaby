@@ -10,9 +10,8 @@ notes : primary key should be first entry in database.
 """
 
 def main():
-    import sqlite3, datetime, time, uuid
-    from os.path import exists
-    
+    import sqlite3
+
     database = sqlite3.connect('noob_database2.db')
     cursor = database.cursor()
     cursor.execute("PRAGMA foreign_keys = ON;")#turns foreign keys on.
@@ -145,7 +144,11 @@ def main():
     #Functions that run : 
     create_all_tables()
     # table_info('bottle')
+
+
     database.commit()
     database.close()
+
+
 if __name__ == '__main__':
     main()

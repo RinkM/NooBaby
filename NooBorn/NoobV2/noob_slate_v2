@@ -1,0 +1,46 @@
+
+import tkinter as tk, customtkinter as ctk
+import random #For the bottle notice. 
+import sqlite3, datetime, time, uuid
+from os.path import exists
+import tkcalendar as tkcal
+
+
+database = sqlite3.connect('noob_database2.db')
+
+cursor = database.cursor()
+
+
+#Find and Print Column names in a table. 
+cursor.execute("PRAGMA TABLE_INFO(user_profile)")
+print("table info : ", cursor.fetchall())
+
+# database = "noob_database.db"
+# if exists(database) == False: create_database()
+# cursor.execute("SELECT unique_user_str FROM user_profile")
+# user= cursor.fetchall()
+# print(user)
+
+
+#Find and Print All Table Names in a DB:
+# cursor.execute ("SELECT sql FROM sqlite_masterWHERE tbl_name = 'table_name' AND type = 'table'")
+table_query = ("SELECT name FROM sqlite_master WHERE type='table';")
+cursor.execute(table_query)
+tables= cursor.fetchall()
+print ("tablelist:", tables)
+
+
+# cursor.execute("SELECT baby_name FROM baby_profile WHERE unique_user_str = unique_user_str FROM user_profile WHERE username = 'mike' ")
+# username= cursor.fetchall()
+
+# cursor.execute("SELECT baby_name FROM baby_profile")
+# baby = cursor.fetchall()
+
+def tablecontents(table):
+    cursor.execute(f"SELECT * FROM {table};")
+    all_data = cursor.fetchall()
+    print(f"{table} Table Data: ")
+    for x in all_data:
+        print(x)
+    return
+tablecontents('user_profile')

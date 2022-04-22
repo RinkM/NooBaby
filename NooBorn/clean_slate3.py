@@ -1,92 +1,22 @@
-import sqlite3
-
-database = sqlite3.connect('noob_database.db')
 
 
-def create_tables():
-    
-    cursor = database.cursor()
 
 
-    cursor.execute("""CREATE TABLE IF NOT EXISTS bottle (
-            bottle_num integer UNIQUE, 
-            datetime text,
-            utc integer,  
-            amount integer NOT NULL,
-            baby_id integer, 
-            product text,
-            product_id integer
-            ) """) 
-
-    cursor.execute("""CREATE TABLE IF NOT EXISTS diaper(
-                table_id text,
-                diaper_num integer, 
-                datetime text,
-                utc integer,
-                onetwo integer NOT NULL,
-                baby_id integer 
-                )""")
-
-    cursor.execute("""CREATE TABLE IF NOT EXISTS sleep(
-                table_id text,
-                bottle_num integer, 
-                datetime text,
-                utc integer,
-                start_time integer, 
-                end_time integer,
-                duration integer NOT NULL,
-                baby_id integer
-                )""")
+import customtkinter as ctk
+import sqlite3, datetime, time, uuid
+import tkcalendar as tkcal
 
 
-    cursor.execute("""CREATE TABLE IF NOT EXISTS solid_food(
-                table_id text,
-                solid_food_num integer, 
-                datetime text,
-                utc integer,
-                baby_id integer FOREIGN  KEY,
-                food_name text,
-                amount integer NOT NULL
-        )""")
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
 
-    cursor.execute("""CREATE TABLE IF NOT EXISTS milestones(
-                table_id text,
-                stone_num integer,
-                stone_name text, 
-                stone_description text,
-                stone_acheived integer,
-                stone_text_achieve text, 
-                datetime text,
-                utc integer,
-                baby_id integer FOREIGN  KEY
-        )""")
+root = ctk.CTk() 
+root.geometry("1024x576")
+root.resizable(width=False, height=False)
+root.title("NooBorn Test Window")
 
 
-    cursor.execute("""CREATE TABLE IF NOT EXISTS baby_profile (
-                table_id text,
-                profile_num integer, 
-                datetime text,
-                utc integer,
-                baby_id integer PRIMARY KEY,
-                baby_name text,
-                birthdate_utc integer,
-                birthdate_time text NOT NULL,
-                sex integer,
-                unique_user_str text,
-                unique_user blob
-        )""")
-
-    cursor.execute("""CREATE TABLE IF NOT EXISTS user_profile (
-                table_id text,
-                unique_user_str text PRIMARY KEY,
-                unique_user blob,
-                user_num integer, 
-                datetime text,
-                utc integer,
-                baby_id integer,
-                username text,
-                password text
-        )""")
+root.mainloop()
 
 
 
@@ -94,38 +24,8 @@ def create_tables():
 
 
 
-    #this saves the database. 
-    database.commit()
-    #testing version
-
-
-
-    # this closes the database.
-    database.close()
-
-
-
-
-
-# cursor.execute("SELECT * FROM bottle3;")
-# cursor.description
-# # print("cursor description: ", cursor.description)
-# print("cursor fetchall: ",cursor.fetchall())
-
-
-    # #testing version
-    # cursor.execute("SELECT * FROM bottle3;")
-    # cursor.description
-    # print("before data", cursor.description)
-
-
-
-
-
-
-
-
-
+# if __name__ == '__main__':
+#     main()
 
 
 # #This is set up to test things in tkinter.
