@@ -49,7 +49,6 @@ def main():
 
     import NooB_Profile as prof
     import NooB_MakeDB as db
-    import Noob_window
 
     import tkinter as tk, customtkinter as ctk
     import sqlite3, datetime, time, uuid

@@ -10,7 +10,7 @@ notes : primary key should be first entry in database.
 """
 
 def main():
-    import sqlite3, datetime, time, uuid
+    import sqlite3
     from os.path import exists
     
     database = sqlite3.connect('noob_database2.db')
