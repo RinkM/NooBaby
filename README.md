@@ -3,6 +3,8 @@
 An app to track and view the nutrition, sleep, and waste of infants.
 
 This is a work in progress. As such, not all features are working or in their final form.
+Version 1 and 2 are the same except that Version 2's files are in the process of being edited and re-factored.  
+
 
 ## What works : 
 * Creation of SQL relationship database.
