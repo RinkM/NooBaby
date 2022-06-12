@@ -5,20 +5,18 @@ def main(root, all_data):
 
 
     import tkinter as tk, customtkinter as ctk
-    import sqlite3, datetime, time, uuid
-    import tkcalendar as tkcal
-    from noob_buttons import button_builder, create_frame, clear_frame
-    from Noob_Summary import final_summary_frame
+    import datetime, time
+    import noob_button_functions
+    import Noob_Summary as summary
 
     top_frame_2 = ctk.CTkFrame(master = root, corner_radius = 20)
     tframegrid2 ={"frame": top_frame_2, "column" : 2,  "padx" : 5, "pady" : 5, "row" : 0,"columnspan" : 1, "rowspan" : 3, "sticky": 'ew'}
 
-
-
     class Collect_Date(ctk.CTkFrame):
         def __init__(self,parent):
             super().__init__(parent)
-            create_frame(tframegrid2)
+
+            noob_button_functions.create_frame(tframegrid2)
             # self.geometry("600x500")
             #variables for current Date
             current_month = time.strftime("%m")
@@ -149,8 +147,8 @@ def main(root, all_data):
 
     #Functions to create the bottle frames and log the information:
     def custom_time_frame():    #allows user to select the date/time and milk amount in oz. button press sets the time. 
-            clear_frame(top_frame_2)
-            create_frame(tframegrid2)
+            noob_button_functions.clear_frame(top_frame_2)
+            noob_button_functions.create_frame(tframegrid2)
 
             how_much_label = ctk.CTkLabel(master = top_frame_2,text_font = ("arial", 12), text = "How many ounces of milk?")
             amount_slider = ctk.CTkSlider(master=top_frame_2, from_=0, to=12,number_of_steps = 24, command=slider_event)
@@ -175,7 +173,7 @@ def main(root, all_data):
         custom_datetime_entry = f"{custom_date.year.get()}-{custom_date.month.get()}-{custom_date.day.get()} {custom_time.hour.get()}:{custom_time.min.get()}"
         all_data['milk_amount'] = ounces
         all_data['milk_datetime'] = datetime.datetime.strptime(f"{custom_datetime_entry}","%Y-%m-%d %H:%M")
-        final_summary_frame("bottle")
+        summary.main(root,all_data,"bottle")
         return(ounces, custom_datetime_entry)
 
         # time_entry = Collect_Time(top_frame_2).grid(column = 0, row = 2, rowspan= 3, padx = 5, pady = 5,)

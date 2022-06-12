@@ -2,12 +2,13 @@
 
 
 
-def window_main(root, all_data):
-    import customtkinter as ctk
-    from Noob_Major_buttons import button_builder, create_frame, clear_frame
-    from Noob_Summary import final_summary_frame
+def main(root, all_data,color):
     import datetime
-
+    import tkinter as tk, customtkinter as ctk
+    import sqlite3, datetime, time, uuid
+    import tkcalendar as tkcal
+    import noob_button_functions
+    import Noob_Summary as summary
 
 
     top_frame_2a = ctk.CTkFrame(master = root, corner_radius = 20)
@@ -25,9 +26,9 @@ def window_main(root, all_data):
 
     #Diaper Button Functions
     def yellow_press(): #when yellow diaper button is pressed.  - creates the morning, noon etc. buttons. Changes bg color. 
-        clear_frame(top_frame_2a)
-        create_frame(tframegrid2a)   
-        button_builder(time_period_buttons)
+        noob_button_functions.clear_frame(top_frame_2a)
+        noob_button_functions.create_frame(tframegrid2a)   
+        noob_button_functions.button_builder(time_period_buttons)
         # if all_data['onetwo']:
         #     final_summary_frame("diaper")
         
@@ -37,9 +38,9 @@ def window_main(root, all_data):
 
 
     def brown_press():
-        clear_frame(top_frame_2a)
-        create_frame(tframegrid2a)   
-        button_builder(time_period_buttons)
+        noob_button_functions.clear_frame(top_frame_2a)
+        noob_button_functions.create_frame(tframegrid2a)   
+        noob_button_functions.button_builder(time_period_buttons)
         all_data['onetwo'] = 2
         
         top_frame_2a.configure(fg_color = '#715f1d')
@@ -53,7 +54,7 @@ def window_main(root, all_data):
         all_data['diaper_datetime']= diaper_time
         all_data['moment_of_day']= daytime
         print(diaper_time,daytime)
-        final_summary_frame("diaper")
+        summary.main(root,all_data,"diaper")
         format  = "%Y-%m-%d %H:%M:%S"
         local_dt = datetime.datetime.strptime(diaper_time, format)
         print("local", local_dt)
@@ -65,6 +66,11 @@ def window_main(root, all_data):
 
 
 
+    if color == "yellow":
+        yellow_press()
+    elif color == "brown":
+        brown_press()
+
 
 
 
@@ -74,7 +80,7 @@ def window_main(root, all_data):
 
 
 if __name__ == '__main__':
-    window_main()
+    main()
 
 
 

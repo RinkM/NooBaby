@@ -5,22 +5,22 @@
 
 
 
-def window_main(root, all_data):
+def main(root, all_data):
+# new imports...
 
-    
     import tkinter as tk, customtkinter as ctk
-    import sqlite3, datetime, time, uuid
-    import tkcalendar as tkcal
-    from Noob_Major_buttons import button_builder, create_frame, clear_frame
-    from Noob_Summary import final_summary_frame
+
+    import noob_button_functions
+    import Noob_Summary as summary
+
 
     top_frame_2_sleep = ctk.CTkFrame(master = root, corner_radius = 20)
     tframegrid2_sleep ={"frame": top_frame_2_sleep, "column" : 2,  "padx" : 5, "pady" : 5, "row" : 0,"columnspan" : 1, "rowspan" : 3, "sticky": 'ew'}
 
     def sleep_button_press():
-        clear_frame(top_frame_2_sleep)
-        create_frame(tframegrid2_sleep)   
-        final_summary_frame('sleep')
+        noob_button_functions.clear_frame(top_frame_2_sleep)
+        noob_button_functions.create_frame(tframegrid2_sleep)
+        summary.main(root,all_data,"sleep")
 
         def minute_slider_event(value):
             minute_label = ctk.CTkLabel(master = top_frame_2_sleep, text = f"{value} Minutes")
@@ -47,7 +47,7 @@ def window_main(root, all_data):
         hour_slider.grid(column = 0,  padx = 5, pady = 5, row = 4, rowspan = 1, columnspan=1)
 
 
-
+    sleep_button_press()
 
 
 
@@ -55,6 +55,6 @@ def window_main(root, all_data):
 
 
 if __name__ == '__main__':
-    window_main(root,all_data)
+    main()
 
 

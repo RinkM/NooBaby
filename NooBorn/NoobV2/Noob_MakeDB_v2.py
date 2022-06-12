@@ -1,7 +1,7 @@
 
 """
 NooB_MakeDB.py 
-Opens then creates the sqlite3 database file, various tables, and columns.
+This file then creates the sqlite3 database file, various tables, and columns.
 Saves the changes. 
 Quits the database. 
 
